@@ -117,7 +117,7 @@ document.addEventListener('deviceready', function () {
      function formatarTempo(tempo) {
         tempo = (tempo/60).toFixed(2)
         minutos = Math.floor(tempo)
-        segundos = Math.round((tempo - minutos) * 60)
+        segundos = Math.ceil((tempo - minutos) * 60)
         return minutos + ":" + segundos
     }
     
