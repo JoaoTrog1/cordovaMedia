@@ -7,27 +7,82 @@
     <script src="cordova.js"></script>
     <script src="js/tailwind.js"></script>
   </head>
-  <body class="h-screen w-screen bg-slate-900 flex justify-center p-8">
-    <nav class="w-full flex justify-between">
+  <body
+    class="h-screen w-screen bg-slate-950 flex flex-col justify-center p-8 gap-16"
+  >
+    <nav class="flex justify-center">
       <p class="text-slate-500 font-bold">Playlist</p>
-      <p class="text-slate-500 font-bold">
+    </nav>
+
+    <div class="flex flex-col gap-16">
+      <div class="size-60 bg-slate-800 rounded-md mx-auto"></div>
+      <div class="w-full flex flex-col justify-center">
+        <h1 class="text-xl font-bold text-slate-200 text-center">
+          Sweet Child O'Mine
+        </h1>
+        <h2 class="text-slate-400 text-center">Guns N' Roses</h2>
+      </div>
+    </div>
+
+    <div class="w-full h-3 pb-4">
+      <div class="h-1 bg-slate-500 flex rounded-full">
+        <div class="h-1 w-[50%] bg-lime-500 rounded-full"></div>
+        <div class="size-3 bg-white rounded-full relative bottom-1"></div>
+      </div>
+    </div>
+
+    <main class="w-full flex justify-center items-center gap-2">
+      <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
+          width="40"
+          height="40"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#64748b"
+          stroke="#cbd5e1"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-ellipsis"
+          class="lucide lucide-skip-back"
         >
-          <circle cx="12" cy="12" r="1" />
-          <circle cx="19" cy="12" r="1" />
-          <circle cx="5" cy="12" r="1" />
+          <polygon points="19 20 9 12 19 4 19 20" />
+          <line x1="5" x2="5" y1="19" y2="5" />
         </svg>
-      </p>
-    </nav>
+      </span>
+      <span class="bg-lime-500 active:bg-lime-600 p-4 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#0f172a"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-pause"
+        >
+          <rect x="14" y="4" width="4" height="16" rx="1" />
+          <rect x="6" y="4" width="4" height="16" rx="1" />
+        </svg>
+      </span>
+      <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#cbd5e1"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-skip-forward"
+        >
+          <polygon points="5 4 15 12 5 20 5 4" />
+          <line x1="19" x2="19" y1="5" y2="19" />
+        </svg>
+      </span>
+    </main>
   </body>
 </html>
