@@ -1,3 +1,4 @@
+
 let media; // essa variavel salva o objeto media
 let intervalId;
 let isPaused = false;
@@ -43,7 +44,8 @@ document.addEventListener('deviceready', function () {
         intervalId = setInterval(() => {
             getAudioInfo();
             sta2 = document.getElementById('status2');
-        sta2.innerText = "Duração total: " + media.getDuration() + " segundos";
+            tempoTotal = formatarTempo(media.getDuration())
+            sta2.innerText = "Duração total: " + tempoTotal + " segundos";
         }, 10);
         
         
@@ -76,7 +78,15 @@ document.addEventListener('deviceready', function () {
             media.getCurrentPosition(
                 function (position) {
                     if (position >= 0) {
-                        sta.innerText = "Tempo atual: " + position + " segundos";
+                       
+                        //tempo do audio em %
+                        tamanho = Math.round((position*100)/media.getDuration())
+                        //tempo formatado
+                        tempo = formatarTempo(position)
+                        
+
+
+                        sta.innerText = "Tempo atual: " + tamanho + "%  " + tempo;
                     }
                 },
                 
@@ -101,6 +111,18 @@ document.addEventListener('deviceready', function () {
      document.body.appendChild(resumeButton);
  
 
+
+
+
+     function formatarTempo(tempo) {
+        tempo = (tempo/60).toFixed(2)
+        minutos = Math.floor(tempo)
+        segundos = Math.round((tempo - minutos) * 60)
+        return minutos + ":" + segundos
+    }
+    
+    
+    
 
     
     listAudioFiles();
