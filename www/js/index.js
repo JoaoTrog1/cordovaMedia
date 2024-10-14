@@ -1,3 +1,4 @@
+
 let media; // essa variavel salva o objeto media
 let intervalId;
 
