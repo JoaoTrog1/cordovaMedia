@@ -1,7 +1,7 @@
 let media; // essa variavel salva o objeto media
 let intervalId;
 
-document.addEventListener("deviceready", async () => {
+document.addEventListener("deviceready", () => {
   const audioFolder = cordova.file.applicationDirectory + "www/audio/";
   const filePath = audioFolder + "believer.mp3";
 
@@ -75,6 +75,9 @@ document.addEventListener("deviceready", async () => {
 
   intervalId = setInterval(() => {
     getAudioInfo();
-    totalDuration.innerHTML = formatarTempo(media.getDuration());
+    if (media.getDuration() != -1) {
+      console.log(media.getDuration());
+      totalDuration.innerHTML = formatarTempo(media.getDuration());
+    }
   }, 10);
 });
