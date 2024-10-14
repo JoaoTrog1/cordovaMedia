@@ -6,6 +6,7 @@
     <title>Cordova Media</title>
     <script src="cordova.js"></script>
     <script src="js/tailwind.js"></script>
+    <script src="js/index.js"></script>
   </head>
   <body class="h-screen max-w-screen bg-slate-950">
     <div
@@ -16,7 +17,7 @@
       </div>
 
       <div
-        class="size-60 bg-container bg-[url(./img/believer.jpg)] rounded-md aspect-square"
+        class="size-60 bg-contain bg-[url(./img/believer.jpg)] rounded-md aspect-square"
       ></div>
 
       <div class="w-full flex flex-col justify-center gap-4">
@@ -24,11 +25,20 @@
         <h2 class="text-slate-400 text-center">Imagine Dragons</h2>
       </div>
 
-      <div class="w-full h-1 bg-slate-500 flex rounded-full">
-        <div class="h-1 w-[50%] bg-lime-500 rounded-full"></div>
-
-        <div class="size-3 bg-white rounded-full relative bottom-1"></div>
+      <div class="w-full flex flex-col gap-2">
+        <div class="w-full h-1 bg-slate-500 flex rounded-full">
+          <div
+            id="percentCurrentTime"
+            class="h-1 w-[0%] bg-lime-500 rounded-full"
+          ></div>
+          <div class="size-3 bg-white rounded-full relative bottom-1"></div>
+        </div>
+        <div class="w-full flex justify-between">
+          <p id="currentTime" class="text-slate-200">00:00</p>
+          <p id="totalDuration" class="text-slate-200">04:03</p>
+        </div>
       </div>
+
       <div class="w-full flex justify-center items-center gap-2">
         <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
           <svg
@@ -47,7 +57,28 @@
             <line x1="5" x2="5" y1="19" y2="5" />
           </svg>
         </span>
-        <span class="bg-lime-500 active:bg-lime-600 p-4 rounded-full">
+
+        <span id="play" class="bg-lime-500 active:bg-lime-600 p-4 rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#020617"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-play"
+          >
+            <polygon points="6 3 20 12 6 21 6 3" />
+          </svg>
+        </span>
+
+        <span
+          id="pause"
+          class="hidden bg-lime-500 active:bg-lime-600 p-4 rounded-full"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -64,6 +95,7 @@
             <rect x="6" y="4" width="4" height="16" rx="1" />
           </svg>
         </span>
+
         <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
