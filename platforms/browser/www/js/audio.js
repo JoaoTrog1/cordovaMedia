@@ -8,19 +8,17 @@ document.addEventListener(
   function () {
     const btnPlay = document.getElementById("play");
     const percentCurrentTime = document.getElementById("percentCurrentTime");
-
     const totalDuration = document.getElementById("totalDuration");
     const timeMusic = document.getElementById("timeMusic");
+    const btnNextMedia = document.getElementById("nextMedia");
+    const btnPreviousMedia = document.getElementById("previousMedia");
+    const band = document.getElementById("band");
+    const name = document.getElementById("name");
+    const image = document.getElementById("image");
 
     let songs = [];
     songs.push(new Music("Believer", "Imagine Dragons", "Believer.jpg"));
-    songs.push(
-      new Music(
-        "Sweet Child O' Mine",
-        "Guns N' Roses",
-        "Sweet-Child-O-Mine.jpg"
-      )
-    );
+    songs.push(new Music("Sweet Child O' Mine", "Guns N' Roses", "Sweet-Child-O-Mine.jpg"));
     songs.push(new Music("Vou Deixar", "Skank", "Vou-Deixar.jpg"));
 
     function prepararAudio(name) {
@@ -39,6 +37,11 @@ document.addEventListener(
           console.log("Erro: " + err);
         }
       );
+
+      
+
+      
+     
     }
 
     function pauseAudio() {
@@ -58,8 +61,7 @@ document.addEventListener(
         intervalId = setInterval(() => {
           getTimeMusic();
         }, 1);
-        const totalDuration = document.getElementById("totalDuration");
-        totalDuration.innerText = formatarTempo(media.getDuration());
+        
         btnPlay.innerHTML =
           '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause" > <rect x="14" y="4" width="4" height="16" rx="1" /> <rect x="6" y="4" width="4" height="16" rx="1" /> </svg>';
       }
@@ -68,13 +70,32 @@ document.addEventListener(
     function getTimeMusic() {
       if (media) {
         media.getCurrentPosition(function (position) {
+          
           progressMusic = (position * 100) / media.getDuration();
           timeMusic.innerText = formatarTempo(position);
-
+          
           console.log(position);
           percentCurrentTime.style.width = progressMusic + "%";
         });
       }
+    }
+
+    function getDurationMucic(){
+      let duration = media.getDuration();
+      if(media){
+  
+        media.setVolume(0.0);
+        media.play();
+        if(duration > 0){
+          totalDuration.innerText = formatarTempo(media.getDuration());
+        }else{
+          setTimeout(getDurationMucic, 100);
+        }
+        media.pause();
+        media.seekTo(0);
+        media.setVolume(1.0);
+      }
+
     }
 
     function formatarTempo(tempo) {
@@ -95,18 +116,19 @@ document.addEventListener(
 
     function alterarMusica(music) {
       prepararAudio(music.name + ".mp3");
-      isPaused = true;
-
-      document.getElementById("band").innerText = music.band;
-      document.getElementById("name").innerText = music.name;
-      document.getElementById("image").style.backgroundImage =
+      
+      band.innerText = music.band;
+      name.innerText = music.name;
+      image.style.backgroundImage =
         "url(./img/" + music.img + ")";
       btnPlay.innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#020617" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play" > <polygon points="6 3 20 12 6 21 6 3" /> </svg>';
-
-      percentCurrentTime.style.width = "0%";
-      totalDuration.innerText = "00:00";
       timeMusic.innerText = "00:00";
+      totalDuration.innerText = "00:00"
+      percentCurrentTime.style.width = "0%";
+      getDurationMucic();
+
+      
     }
 
     btnPlay.onclick = function () {
@@ -117,7 +139,7 @@ document.addEventListener(
       }
     };
 
-    const btnNextMedia = document.getElementById("nextMedia");
+    
     btnNextMedia.onclick = function () {
       if (currentMusic >= songs.length - 1) {
         currentMusic = 0;
@@ -127,7 +149,7 @@ document.addEventListener(
       alterarMusica(songs[currentMusic]);
     };
 
-    const btnPreviousMedia = document.getElementById("previousMedia");
+    
     btnPreviousMedia.onclick = function () {
       if (currentMusic <= 0) {
         currentMusic = songs.length - 1;
@@ -135,6 +157,7 @@ document.addEventListener(
         currentMusic--;
       }
       alterarMusica(songs[currentMusic]);
+
     };
 
     function Music(name, band, img) {
