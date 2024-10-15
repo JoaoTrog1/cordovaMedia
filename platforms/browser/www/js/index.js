@@ -76,7 +76,6 @@ document.addEventListener("deviceready", () => {
   intervalId = setInterval(() => {
     getAudioInfo();
     if (media.getDuration() != -1) {
-      console.log(media.getDuration());
       totalDuration.innerHTML = formatarTempo(media.getDuration());
     }
   }, 10);
