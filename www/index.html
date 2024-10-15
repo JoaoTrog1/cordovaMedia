@@ -6,7 +6,7 @@
     <title>Cordova Media</title>
     <script src="cordova.js"></script>
     <script src="js/tailwind.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/audio.js"></script>
   </head>
   <body class="h-screen max-w-screen bg-slate-950">
     <div
@@ -17,30 +17,46 @@
       </div>
 
       <div
-        class="size-60 bg-contain bg-[url(./img/believer.jpg)] rounded-md aspect-square"
+        id="image"
+        class="size-60 bg-contain bg-[url(./img/Believer.jpg)] rounded-md aspect-square"
       ></div>
 
       <div class="w-full flex flex-col justify-center gap-4">
-        <h1 class="text-xl font-bold text-slate-200 text-center">Believer</h1>
-        <h2 class="text-slate-400 text-center">Imagine Dragons</h2>
+        <h1 id="name" class="text-xl font-bold text-slate-200 text-center">
+          Believer
+        </h1>
+        <h2 id="band" class="text-slate-400 text-center">Imagine Dragons</h2>
       </div>
 
       <div class="w-full flex flex-col gap-2">
         <div class="w-full h-1 bg-slate-500 flex rounded-full">
           <div
             id="percentCurrentTime"
+<<<<<<< HEAD
             class="h-1 w-[0%] bg-lime-500 rounded-full"
+=======
+            class="h-1 bg-lime-500 rounded-full"
+            style="width: 0%"
+>>>>>>> feature02
           ></div>
           <div class="size-3 bg-white rounded-full relative bottom-1"></div>
         </div>
         <div class="w-full flex justify-between">
+<<<<<<< HEAD
           <p id="currentTime" class="text-slate-200">00:00</p>
           <p id="totalDuration" class="text-slate-200">04:03</p>
+=======
+          <p id="timeMusic" class="text-slate-200">00:00</p>
+          <p id="totalDuration" class="text-slate-200">00:00</p>
+>>>>>>> feature02
         </div>
       </div>
 
       <div class="w-full flex justify-center items-center gap-2">
-        <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
+        <span
+          id="previousMedia"
+          class="bg-transparent active:bg-slate-900 p-4 rounded-full"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -96,7 +112,10 @@
           </svg>
         </span>
 
-        <span class="bg-transparent active:bg-slate-900 p-4 rounded-full">
+        <span
+          id="nextMedia"
+          class="bg-transparent active:bg-slate-900 p-4 rounded-full"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
