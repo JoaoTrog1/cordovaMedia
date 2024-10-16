@@ -84,8 +84,9 @@ document.addEventListener(
       let duration = media.getDuration();
       if(media){
   
-        media.setVolume(0.0);
+        
         media.play();
+        media.setVolume(0.0);
         if(duration > 0){
           totalDuration.innerText = formatarTempo(media.getDuration());
         }else{
